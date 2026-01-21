@@ -1,6 +1,8 @@
 using GestaoFerias.Application.DTOs;
-using GestaoFerias.Application.Services;
+using GestaoFerias.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using GestaoFerias.Infrastructure.Auth;
+
 
 namespace GestaoFerias.API.Controllers;
 
@@ -8,16 +10,25 @@ namespace GestaoFerias.API.Controllers;
 [Route("api/auth")]
 public class AuthController : ControllerBase
 {
-    private readonly AuthService _authService;
+    private readonly IAuthService _authService;
 
-    public AuthController(AuthService authService)
+    public AuthController(IAuthService authService)
     {
         _authService = authService;
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterRequest request)
-        => Ok(new { token = await _authService.Register(request) });
+public async Task<IActionResult> Register(RegisterRequest request)
+{
+    var result = await _authService.Register(request);
+
+    return Ok(new
+    {
+        matricula = result.Matricula,
+        token = result.Token
+    });
+}
+
 
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
