@@ -2,6 +2,8 @@ using GestaoFerias.Application.DTOs;
 using GestaoFerias.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using GestaoFerias.Infrastructure.Auth;
+using Microsoft.AspNetCore.Authorization;
+
 
 
 namespace GestaoFerias.API.Controllers;
@@ -18,6 +20,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
+    [Authorize(Roles = "Gestor")]
 public async Task<IActionResult> Register(RegisterRequest request)
 {
     var result = await _authService.Register(request);
@@ -29,7 +32,7 @@ public async Task<IActionResult> Register(RegisterRequest request)
     });
 }
 
-
+[AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
         => Ok(new { token = await _authService.Login(request) });

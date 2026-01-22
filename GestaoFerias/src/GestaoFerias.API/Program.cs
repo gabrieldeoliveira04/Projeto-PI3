@@ -14,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Controllers
 // =======================
 builder.Services.AddControllers();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+
 
 // =======================
 // Swagger

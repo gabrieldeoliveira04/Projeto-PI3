@@ -58,6 +58,16 @@ public class AuthService : IAuthService
 
         _context.Usuarios.Add(usuario);
         await _context.SaveChangesAsync();
+        try
+{
+    _context.Usuarios.Add(usuario);
+    await _context.SaveChangesAsync();
+}
+catch (DbUpdateException)
+{
+    throw new Exception("Erro ao gerar matrícula. Tente novamente.");
+}
+
 
         var token = _tokenService.GenerateToken(usuario);
 
