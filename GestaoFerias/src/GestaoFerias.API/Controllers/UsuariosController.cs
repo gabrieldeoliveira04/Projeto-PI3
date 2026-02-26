@@ -18,6 +18,7 @@ public class UsuariosController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAll()
         => Ok(await _service.GetAll());
 
@@ -37,7 +38,7 @@ public async Task<IActionResult> GetByNome([FromQuery] string nome)
 
     [HttpPut("{id}")]
     [Authorize(Roles = "Gestor")]
-    public async Task<IActionResult> Update(Guid id, UpdateUserRequest request)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateUserRequest request)
     {
         await _service.Update(id, request);
         return NoContent();

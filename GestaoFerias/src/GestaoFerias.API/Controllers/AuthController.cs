@@ -20,8 +20,8 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    [Authorize(Roles = "Gestor")]
-public async Task<IActionResult> Register(RegisterRequest request)
+    [AllowAnonymous]
+public async Task<IActionResult> Register([FromBody] RegisterRequest request)
 {
     var result = await _authService.Register(request);
 

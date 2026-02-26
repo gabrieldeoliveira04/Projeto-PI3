@@ -93,6 +93,8 @@ builder.Services.AddAuthentication(options =>
 // =======================
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<ISetorService, SetorService>();
+builder.Services.AddScoped<IFeriasService, FeriasService>();
 
 var app = builder.Build();
 
