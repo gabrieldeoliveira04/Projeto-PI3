@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestaoFerias.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+854d94b90c3c62ff2df7a5476227cf5912d0ca03")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f90b4b01f4162cfd021a9afd6fccbb48b983da61")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestaoFerias.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestaoFerias.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
